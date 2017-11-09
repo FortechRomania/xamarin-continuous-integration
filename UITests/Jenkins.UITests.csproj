@@ -1,0 +1,122 @@
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78300B6C-D813-4564-A12A-E57CF9C93FFC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Jenkins.UITests</RootNamespace>
+    <AssemblyName>UITests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.0.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.2.1.0\lib\net45\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.UITest">
+      <HintPath>..\packages\Xamarin.UITest.2.2.0\lib\net45\Xamarin.UITest.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkdownSharp">
+      <HintPath>..\packages\MarkdownSharp.1.13.0.0\lib\35\MarkdownSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SpecNuts">
+      <HintPath>..\packages\SpecNuts.1.0.15\lib\net45\SpecNuts.dll</HintPath>
+    </Reference>
+    <Reference Include="SpecNuts.Json">
+      <HintPath>..\packages\SpecNuts.Json.1.0.15\lib\net45\SpecNuts.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="App.config" />
+    <None Include="Features\AddItem.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AddItem.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\config.ini" />
+    <None Include="Scripts\create_and_launch_avd.sh" />
+    <None Include="Scripts\run_android_tests.sh" />
+    <None Include="Scripts\run_ios_tests.sh" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Helpers\AppManager.cs" />
+    <Compile Include="Pages\ItemsListPage.cs" />
+    <Compile Include="Features\AddItem.feature.cs">
+      <DependentUpon>AddItem.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Steps\ItemsListSteps.cs" />
+    <Compile Include="Pages\BasePage.cs" />
+    <Compile Include="Pages\AddItemPage.cs" />
+    <Compile Include="Steps\AddItemSteps.cs" />
+    <Compile Include="Steps\Hooks.cs" />
+    <Compile Include="Settings\AndroidSettings.Designer.cs">
+      <DependentUpon>AndroidSettings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\IosSettings.Designer.cs">
+      <DependentUpon>IosSettings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings\GlobalSettings.Designer.cs">
+      <DependentUpon>GlobalSettings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\IAppExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Steps\" />
+    <Folder Include="Features\" />
+    <Folder Include="Settings\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Settings\AndroidSettings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AndroidSettings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\IosSettings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>IosSettings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings\GlobalSettings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalSettings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Droid\Jenkins.Droid.csproj">
+      <Project>{30980B45-F1B1-428F-A794-D9096887CBFE}</Project>
+      <Name>Jenkins.Droid</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\iOS\Jenkins.iOS.csproj">
+      <Project>{3F12E931-A855-470A-9568-C201F3EBE46F}</Project>
+      <Name>Jenkins.iOS</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+      <Private>False</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets" Condition="Exists('..\packages\StyleCop.MSBuild.5.0.0\build\StyleCop.MSBuild.targets')" />
+</Project>
