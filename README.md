@@ -80,7 +80,6 @@ The infrastructure is built around the default VS for Mac Xamarin Template Appli
         - It creates (if it doesn't already exist) an iOS Simulator based on the passed name, device type and iOS runtime parameters (disabling the keyboard settings for fixing text entry issues)
         - It runs the UI automated tests by updating the resource files found in the [**Settings**](UITests/Settings) folder with iOS specific settings
         - It is **important** that the desired simulator runtimes are already installed on the machine
-        - <span style="color:red">**iOS 11 Simulator Issue:**</span> at the time of writing this (using **Xamarin.UITest 2.2.0**) - trying to run the tests on an iOS 11 simulator throws the following error: [*Xamarin.UITest.XDB.Exceptions.DeviceAgentException : Failed to install DeviceAgent*](https://bugzilla.xamarin.com/show_bug.cgi?id=60372#c4)
     - Consumes the **.json** reports using the [Cucumber Reports Plugin](https://wiki.jenkins.io/display/JENKINS/Cucumber+Reports+Plugin) that can be found in **UITests/bin/debug**
     - Fails the build if any of the tests failed (sending an email to the interested parties)
     - Improvement opportunities:
