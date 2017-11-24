@@ -5,8 +5,9 @@
 
 The infrastructure is built around the default VS for Mac Xamarin Template Application.
 
-**Notice**: The main purpose of this repository is to highlight the infrastructure surrounding automated Unit & Acceptance (UI) Tests and **NOT** on Unit Testing and Acceptance (UI) Testing design patterns (maybe just slightly on Specflow & Page Object Pattern integration). Please see the **Useful Resources** section for Unit Testing and Acceptance (UI) Testing design tips and tricks.
+**Note**: The main purpose of this repository is to highlight the infrastructure surrounding automated Unit & Acceptance (UI) Tests and **NOT** on Unit Testing and Acceptance (UI) Testing design patterns (maybe just slightly on Specflow & Page Object Pattern integration). Please see the **Useful Resources** section for Unit Testing and Acceptance (UI) Testing design tips and tricks.
 
+All logic found in the *.sh* scripts can also be found in the *.cake* files used by [Cake Build](https://github.com/cake-build/cake). Feel free to go with either *bash* scripts or *.cake* scripts on your own projects - __you don't have to use both approaches__. We suggest having a look at the *.sh* files first to understand what happens under the hood and after that you can migrate to the more maintainable *.cake* scripts.
 ### Requirements
 
 * macOS 10.12.6+

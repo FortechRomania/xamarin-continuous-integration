@@ -189,3 +189,7 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
+# Cake
+tools/**
+!tools/packages.config
+!tools/*.cake
