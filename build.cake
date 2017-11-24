@@ -81,9 +81,18 @@ Task("UnitTests")
     NUnit3($"{Projects.UnitTestsPath}/bin/**/*Tests.dll");
 });
 
+Task("SpecFlowDefinitionCheck")
+.Does(() => {
+    NuGetRestore(Projects.Solution);
+    ClearProjectDependenciesForProject(Projects.UITests);
+    MSBuild(Projects.UITestsPath);
+    SpecFlowStepDefinitionReport(Projects.UITests);
+});
+
 Task("HealthCheck")
 .IsDependentOn("Build")
 .IsDependentOn("UnitTests");
+//.IsDependentOn("SpecFlowDefinitionCheck");
 
 Task("iOSUITests")
 .IsDependentOn("NuGetRestore")
