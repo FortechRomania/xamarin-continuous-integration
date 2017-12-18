@@ -18,7 +18,7 @@ var CONFIGURATION = Argument("configuration", "Release");
 var HOME = EnvironmentVariable("HOME");
 
 // ANDROID APK ARGUMENTS
-var BUILD_TOOLS = "27.0.1";
+var BUILD_TOOLS = Argument("build-tools", "27.0.1");
 var ANDROID_HOME = EnvironmentVariable("ANDROID_HOME");
 var KEYSTORE = $"{Environment.CurrentDirectory}/Droid/Scripts/ProductionKey.keystore";
 var KEYSTORE_ALIAS = "productionkey";
@@ -31,7 +31,7 @@ var APK_SIGNER = $"{ANDROID_HOME}/build-tools/{BUILD_TOOLS}/apksigner";
 var APP_PATH = Argument("app-path", "");
 var SIMULATOR_NAME = Argument("sim-name", "UITests_Iphone6_11.1");
 var DEVICE_TYPE = Argument("device-type", "com.apple.CoreSimulator.SimDeviceType.iPhone-6");
-var DEVICE_RUNTIME = Argument("device-type", "com.apple.CoreSimulator.SimRuntime.iOS-11-1");
+var DEVICE_RUNTIME = Argument("device-runtime", "com.apple.CoreSimulator.SimRuntime.iOS-11-2");
 
 // ANDROID UI TESTS ARGUMENTS
 var AVD_HOME = $"{HOME}/.android/avd";
